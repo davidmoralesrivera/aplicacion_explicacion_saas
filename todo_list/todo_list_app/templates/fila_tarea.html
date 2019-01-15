@@ -1,0 +1,5 @@
+<tr class="fila_tarea {% if tarea.terminada %}tarea_terminada{% endif %}" data-tarea="{{ tarea.pk }}" >
+	<td><input class="estado_tarea" type="checkbox" name="" data-tarea="{{ tarea.pk }}" data-lista="{{ tarea.lista_id }}"
+		{% if tarea.terminada %}checked{% endif %}></td>
+	<td>{{ tarea.descripcion }}</td>
+</tr>

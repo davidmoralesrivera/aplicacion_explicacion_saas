@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+{% block contenido %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Nueva Lista</h1>
+    </div>
+    <div class="col-lg-12">
+        <form role="form" method="POST" action=".">{% csrf_token %}
+        	{% for f in formulario %}
+        		
+		    <div class="form-group">
+		        <label>{{ f.label }}:</label>
+		        {{ f }}
+		    </div>
+        	{% endfor %}
+		    
+		    <button type="submit" class="btn btn-primary">Guardar</button>
+		</form>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+{% endblock contenido %}

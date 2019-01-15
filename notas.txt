@@ -1,0 +1,19 @@
+docker network create --attachable dbnetwork
+
+
+docker build -t ejemplo_ubuntu -f .\Dockerfile .
+
+docker run -t -d --name=desarrollo --restart=unless-stopped -v $(pwd):/source -p 8000:8000 ejemplo_ubuntu
+
+
+
+docker run -t -d --name=desarrollo --restart=unless-stopped --network=dbnetwork -v ${pwd}:/source -p 8000:8000 ejemplo_ubuntu
+
+docker exec -it desarrollo /bin/bash
+
+
+docker run -t --name=data-mysql57 --restart=unless-stopped -v /var/lib/mysql busybox echo "MySQL Data"
+
+docker run -d --name=mysql57 --restart=unless-stopped --network=dbnetwork --volumes-from=data-mysql57 -e MYSQL_ROOT_PASSWORD='root' -e MYSQL_DATABASE='dev' -p 3306:3306 mysql:5.7
+
+

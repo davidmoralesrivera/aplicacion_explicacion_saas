@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  contenedor_desarrollo:
+    image: ejemplo_ubuntu
+    volumes:
+      - .:/source
+    networks:
+      - default
+    ports:
+      - "8000:8000"
+networks:
+  default:

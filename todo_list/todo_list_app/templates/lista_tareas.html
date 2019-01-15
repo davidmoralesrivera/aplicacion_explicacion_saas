@@ -1,0 +1,47 @@
+<h3>{{lista.nombre}}</h3>
+{% if lista.descripcion %}
+	<p>{{ lista.descripcion }}</p>
+{% endif %}
+
+<form role="form" method="POST" action="." class="formulario_tarea" data-lista="{{ lista.pk }}">
+    <div class="form-group input-group">
+	    <input type="text" class="form-control" name="nueva_tarea" placeholder="Nueva tarea" required="required" autocomplete="off">
+	    <span class="input-group-btn">
+	        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>
+	        </button>
+	    </span>
+	</div>
+    
+</form>
+
+<div class="table-responsive table-bordered">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody class="listado_tareas">
+            {% for tarea in lista.tarea_set.all %}
+            	{% include "fila_tarea.html" %}
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+	$(".formulario_tarea").on("submit", function(event){
+		event.preventDefault();
+		lista = $(".formulario_tarea").attr("data-lista");
+		nueva_tarea = $("input[name='nueva_tarea']").val();
+
+		$("input[name='nueva_tarea']").val("").focus();
+		$.post("{% url 'todo_list_app:lista_tareas' %}", {"lista":lista, "nueva_tarea": nueva_tarea}, 
+			function(respuesta){
+				$(".listado_tareas").append(respuesta);
+		});
+	});
+
+</script>

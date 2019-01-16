@@ -1,13 +1,17 @@
 docker network create --attachable dbnetwork
 
 
+windows
 docker build -t ejemplo_ubuntu -f .\Dockerfile .
-
-docker run -t -d --name=desarrollo --restart=unless-stopped -v $(pwd):/source -p 8000:8000 ejemplo_ubuntu
-
-
-
 docker run -t -d --name=desarrollo --restart=unless-stopped --network=dbnetwork -v ${pwd}:/source -p 8000:8000 ejemplo_ubuntu
+
+
+
+docker build -t ejemplo_ubuntu -f ./Dockerfile .
+docker run -t -d --name=desarrollo --restart=unless-stopped --network=dbnetwork -v $(pwd):/source -p 8000:8000 ejemplo_ubuntu
+
+
+
 
 docker exec -it desarrollo /bin/bash
 

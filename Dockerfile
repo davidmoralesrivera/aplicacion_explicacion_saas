@@ -12,7 +12,6 @@ RUN apt-get install -y python-pip
 RUN apt-get install -y libmysqlclient-dev
 RUN apt-get install -y supervisor
 
-
 # ES Locale
 RUN locale-gen es_ES.UTF-8
 ENV LANG es_ES.UTF-8
@@ -22,8 +21,6 @@ ADD . /source
 WORKDIR /source
 
 RUN pip install -r requirements.txt
-
-
 
 
 COPY /supervisord.conf /etc/supervisor/conf.d/supervisord.conf

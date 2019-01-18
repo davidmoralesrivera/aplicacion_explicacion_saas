@@ -26,3 +26,12 @@
 2019-01-17 19:35:20,962 INFO supervisord started with pid 1
 2019-01-17 19:35:21,966 INFO spawned: 'app' with pid 8
 2019-01-17 19:35:23,162 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-18 14:50:42,967 CRIT Supervisor running as root (no user in config file)
+2019-01-18 14:50:42,967 WARN For [program:app], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2019-01-18 14:50:42,978 INFO RPC interface 'supervisor' initialized
+2019-01-18 14:50:42,979 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-01-18 14:50:42,984 INFO supervisord started with pid 1
+2019-01-18 14:50:43,989 INFO spawned: 'app' with pid 8
+2019-01-18 14:50:45,225 INFO success: app entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-18 15:49:14,885 INFO waiting for app to stop
+2019-01-18 15:49:14,944 INFO stopped: app (exit status 0)

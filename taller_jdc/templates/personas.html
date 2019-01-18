@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Personas</h1>
+
+	<h2>	Crear</h2>
+	<form action="/crear_persona/" method="GET">	
+			<label>	Nombre</label>
+			<input type="text" name="nombre">
+			<label>	Apellido</label>
+			<input type="text" name="apellido">
+			<label>	Altura</label>
+			<input type="number" name="altura">
+			<input type="submit" value="Guardar">
+	</form>
+
+	<h2>	Listado</h2>
+	<table>
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Altura</th>
+			<th>Profesión</th>
+		</tr>
+{% for persona in lista_personas %}
+	<tr>
+		<td>{{persona.nombre}}</td>
+		<td>{{persona.apellido}}</td>
+		<td>{{persona.altura}}</td>
+		<td>{{persona.profesion.nombre}} : 
+			{{persona.profesion.descripcion}}
+
+		{% if persona.profesion.categoria %}
+			 , {{persona.profesion.categoria.nombre}}
+				
+			{% endif %}
+				</td>
+	</tr>
+{% endfor %}
+	</table>
+</body>
+</html>
